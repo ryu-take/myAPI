@@ -13,6 +13,10 @@ export default class CreateTerms implements Seeder {
           term: "ナウい",
           meaning: "今っぽいということ。",
         },
+        {
+          term: "タピる",
+          meaning: "タピオカミルクティーを飲みに行くこと。",
+        },
       ])
       .execute();
   }
