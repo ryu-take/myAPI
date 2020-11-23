@@ -3,7 +3,7 @@ const { Router } = require("express");
 import { Term } from "./entity/Terms";
 const routes = Router();
 
-const setupServer = async () => {
+export const setupServer = async () => {
   const conn = await createConnection();
 
   routes.get("/terms", async (req, res) => {
@@ -23,28 +23,23 @@ const setupServer = async () => {
 
   routes.patch("/terms/:id", async (req, res) => {
     const patchId = req.params.id;
-    console.log("ta-mu", patchId);
     const body = req.body;
-    console.log("ボデー", body);
     const changeTerm = await conn.getRepository(Term).findOne(patchId);
     for (const para in body) {
       changeTerm[para] = body[para];
     }
     await conn.getRepository(Term).save(changeTerm);
-    console.log("変えたterm", changeTerm);
-
     return res.json({ patch_result: "OK" });
   });
 
   routes.delete("/terms/:id", async (req, res) => {
     const deleteId = req.params.id;
-    console.log("ta-mu", deleteId);
     const deleteTerm = await conn.getRepository(Term).findOne(deleteId);
-    console.log(deleteTerm);
     await conn.getRepository(Term).remove(deleteTerm);
     return res.json({ delete: "OK" });
   });
 };
 setupServer();
 
+module.exports = { setupServer };
 module.exports = routes;
