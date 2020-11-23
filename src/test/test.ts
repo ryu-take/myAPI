@@ -1,16 +1,16 @@
-// import "mocha";
-// import chai from "chai";
-// import chaiHttp from "chai-http";
-// import { setupServer } from "../routes";
+import "mocha";
+import chai from "chai";
+import chaiHttp from "chai-http";
+import { setupServer } from "../routes";
 
-// const { Router } = require("express");
-// const route = Router();
+const { Router } = require("express");
+const route = Router();
 
-// chai.use(chaiHttp);
-// chai.should();
-// const { expect } = chai;
+chai.use(chaiHttp);
+chai.should();
+const { expect } = chai;
 
-// const server = setupServer();
+const server = setupServer();
 // describe("API Server", () => {
 //   let request;
 //   beforeEach(() => {
@@ -22,7 +22,6 @@
 //       const res = await request.get("/terms");
 //       res.should.have.status(200);
 //     });
-//     // n体のポケモンが取得できるかどうか
 //     it("should get correct JSON data", async () => {
 //       const res = await request.get("/terms");
 //       res.should.be.json;
